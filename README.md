@@ -8,3 +8,7 @@ This is a simple E-commerce project, that will be focusing on building a beautif
 - [] Build store page
 - [] Build item page
 - [] Link PostgreSQL to store page
+
+## How to run this
+```bash
+npm run devStart
