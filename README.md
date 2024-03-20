@@ -5,9 +5,9 @@ This is a simple E-commerce project, that will be focusing on building a beautif
 ## Checklist:
 - [x] Build home page
 - [x] Build login page
-- [] Build store page
-- [] Build item page
-- [] Link PostgreSQL to store page
+- [ ] Build store page
+- [ ] Build item page
+- [ ] Link PostgreSQL to store page
 
 ## How to run this
 ```bash
