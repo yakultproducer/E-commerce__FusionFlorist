@@ -12,3 +12,6 @@ This is a simple E-commerce project, that will be focusing on building a beautif
 ## How to run this
 ```bash
 npm run start
+```
+## Demo page
+https://fusionflorist.azurewebsites.net/
