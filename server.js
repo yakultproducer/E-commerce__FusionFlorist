@@ -3,6 +3,7 @@ const app = express()
 const path = require('path');
 require('dotenv').config();
 const { Client } = require('pg');
+const port = process.env.PORT || 3000;
 
 
 
@@ -46,4 +47,6 @@ app.get('/login', (req, res) => {
 
 // app.use("/users", userRouter)
 
-app.listen(3000)
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
