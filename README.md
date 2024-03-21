@@ -7,7 +7,7 @@ This is a simple E-commerce project, that will be focusing on building a beautif
 - [x] Build login page
 - [ ] Build store page
 - [ ] Build item page
-- [ ] Link PostgreSQL to store page
+- [x] Link PostgreSQL to home page
 
 ## How to run this
 ```bash
