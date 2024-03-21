@@ -11,7 +11,7 @@ const client = new Client({
     connectionString: connectionString,
 });
 
-client.connect();
+// client.connect();
 
 // Set up Express to use EJS as the view engine
 app.set('view engine', 'ejs');
@@ -21,6 +21,7 @@ app.use(express.static('public'));
 app.get('/', async (req, res) => {
     // Connect to database
     try {
+        await client.connect()
         // Query the PostgreSQL items table to retrieve item data
         const queryResult = await client.query('SELECT * FROM items');
         const items = queryResult.rows;
@@ -28,10 +29,12 @@ app.get('/', async (req, res) => {
         console.log(items);
         // Render the index.ejs template with the items data
         res.render('index', { items });
+        await client.end()
     } catch (error) {
         console.error('Error fetching items:', error);
         res.status(500).send('Internal Server Error');
     }
+    
 });
 
 app.get('/login', (req, res) => {
