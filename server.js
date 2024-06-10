@@ -54,9 +54,9 @@ app.use(session({
 
 app.get('/', (req, res) => {
     if (mongoose.connection.readyState === 1) {
-        res.send('Hello World');
+        res.send('1');
     } else {
-        res.send('Bye World');
+        res.send('2');
     }
 });
 
