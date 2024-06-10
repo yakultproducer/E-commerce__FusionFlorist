@@ -46,17 +46,19 @@ app.use(session({
     } 
 }))
 
-// app.use('/', indexRouter)
-// app.use('/products', productsRouter)
-// app.use('/about', aboutRouter)
-// app.use('/login', loginRouter)
-// app.use('/cart', cartRouter)
+app.use('/', indexRouter)
+app.use('/products', productsRouter)
+app.use('/about', aboutRouter)
+app.use('/login', loginRouter)
+app.use('/cart', cartRouter)
 
-app.get('/', (req, res) => {
-    if (mongoose.connection.readyState === 1) {
-        res.send('1');
-    } else {
-        res.send('2');
+// Diagnostic Route
+app.get('/check-db', async (req, res) => {
+    try {
+        await mongoose.connection.db.admin().ping();
+        res.send('MongoDB is connected');
+    } catch (error) {
+        res.status(500).send('MongoDB connection error: ' + error.message);
     }
 });
 
