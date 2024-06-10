@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 
 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true, tls: true})
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
