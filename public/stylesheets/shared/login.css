@@ -1,0 +1,15 @@
+.login-form{
+    width: 95%;
+    min-width: 220px;
+    max-width: 800px;
+}
+.social-login button{
+    min-width: 250px;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 762px)  {
+    .social-login{
+        flex-direction: column;
+    }
+}

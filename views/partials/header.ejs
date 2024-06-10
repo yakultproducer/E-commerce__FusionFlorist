@@ -1,0 +1,39 @@
+<header class="nav-container">
+  <nav class="header-nav">
+    <a class="header-title" href="/">Fusion Florist</a>
+    <ul class="nav-links">
+      <li><a class="items" href="/products">Products</a></li>
+      <li><a class="items" href="/about#about">About Us</a></li>
+      <li><a class="items" href="/about#contact-us">Contact Us</a></li>
+      <li><a class="items" href="/login">LogIn</a></li>
+      <li><a class="items" href="/cart">Cart</a></li>
+      <li onclick="showSidebar()"><a class="sidebar-button" href="#"><i class="fa-solid fa-bars"></i></a></li>
+    </ul>
+    <ul class="sidebar">
+      <li onclick="closeSidebar()"><a href="#">x</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/about#about">About Us</a></li>
+      <li><a href="/about#contact-us">Contact Us</a></li>
+      <li><a href="/login">LogIn</a></li>
+      <li><a href="/cart">Cart</a></li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  function showSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.style.display = 'flex';
+    setTimeout(() => {
+      sidebar.style.transform = 'translateX(0)';
+    }, 10);
+  }
+
+  function closeSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+      sidebar.style.display = 'none';
+    }, 300);
+  }
+</script>

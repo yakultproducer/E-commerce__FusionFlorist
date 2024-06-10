@@ -1,0 +1,11 @@
+.banner {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}

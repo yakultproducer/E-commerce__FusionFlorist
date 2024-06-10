@@ -1,0 +1,39 @@
+<h2> Our Products</h2>
+<!-- <form action="/products" method="POST">
+  <div class="btn-row">
+    <a class="btn btn-primary" href="/products"> Cancel</a>
+    <button class="btn btn-primary" type="submit">Create</button>
+  </div>
+</form> -->
+<div class="products-box">
+  <%- include('../partials/products', {products: products}) %>
+</div>
+
+<!-- Pagination -->
+<% if (totalPages > 1) %>
+<div class="d-flex justify-content-center">
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item <%= (currentPage == 1) ? 'disabled' : '' %>">
+        <%- currentPage == 1 
+        ? `<span class="page-link">Previous</span>` 
+        : `<a class="page-link" href="?page=${currentPage-1}">Previous</a>` 
+        %>
+      </li>
+      <% pagination.forEach(page => { %>
+      <li class="page-item <%= (currentPage == page) ? 'active' : '' %>">
+        <%- currentPage === page 
+        ? `<span class="page-link"> ${page} </span>` 
+        : `<a class="page-link" href="?page=${page}">${page}</a>` 
+        %>
+      </li>
+      <% }) %>
+      <li class="page-item <%= (currentPage == totalPages) ? 'disabled' : '' %>">
+        <%- currentPage == totalPages 
+        ? `<span class="page-link">Next</span>` 
+        : `<a class="page-link" href="?page=${currentPage+1}">Next</a>` 
+        %>
+      </li>
+    </ul>
+  </nav>
+</div>

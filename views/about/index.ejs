@@ -1,0 +1,131 @@
+
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-md-12"> -->
+            <h2 class="text-center mb-4">About Us</h2>
+            <div class="col-lg-6 text-center my-3">
+                <p class="lead text-center">Welcome to our florist shop, where beauty blooms!</p>
+                <img src="https://via.placeholder.com/400x200" alt="">
+            </div>
+            <div class="col-lg-6">
+                <p class="text-justify">We are passionate about providing exquisite floral arrangements for all
+                    occasions, whether it's weddings, birthdays, anniversaries, or just to brighten someone's
+                    day.</p>
+                <p class="text-justify">At our shop, we pride ourselves on using only the freshest and most
+                    beautiful flowers sourced locally and globally. Our talented florists craft each arrangement
+                    with love and attention to detail, ensuring that every bouquet is a work of art.</p>
+                <p class="text-justify">Customer satisfaction is our top priority, and we go above and beyond to
+                    make sure your floral experience with us is unforgettable. From personalized consultations
+                    to timely delivery, we strive to exceed your expectations every step of the way.</p>
+                <p class="text-justify">Thank you for choosing us to be a part of your special moments. We look
+                    forward to serving you and spreading joy through flowers!</p>
+                <!-- <button class="btn btn-primary text-center mx-auto d-block d-lg-inline-block">Contact us</button> -->
+            </div>
+        </div>
+    </div>
+</section>
+<%# include('../partials/products', {products: products}) %>
+<section id="contact-us" class="contact section-padding" data-scroll-index="5">
+    <div class="container">
+      <div class="sec-head mb-3 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center" style="margin-top: 2rem;">
+
+            <h3>Let's Get in Touch!</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <!-- left side -->
+        <div class="col-lg-6 mb-3">
+          <div class="info full-width md-mb80">
+            <div class="item mb-3 d-flex align-items-center">
+              <div class="me-2">
+                <span style="font-size: 2rem; color: rgb(255, 255, 255);">
+                  <i class="fa-solid fa-phone icon"></i>
+                </span>
+
+              </div>
+              <div class="ms-3">
+                <h6 class="opacity-7">Phone</h6>
+              </div>
+              <div class="ms-auto">
+                <h4>+1 778 700 7048</h4>
+              </div>
+            </div>
+            <div class="item mb-3 d-flex align-items-center">
+              <div class="me-2">
+                <span style="font-size: 2rem; color: rgb(255, 255, 255);">
+                  <i class="fa-solid fa-envelope icon"></i>
+                </span>
+
+              </div>
+              <div class="ms-3">
+                <h6 class="opacity-7">Email</h6>
+              </div>
+              <div class="ms-auto">
+                <h4>
+                  <a href="mailto:abc@example.com">johnathanwong2001@gmail.com</a>
+                </h4>
+              </div>
+            </div>
+            <div class="item d-flex align-items-center">
+              <div class="me-2">
+                <span style="font-size: 2rem; color: rgb(255, 255, 255);">
+                  <i class="fa-solid fa-location-dot icon"></i>
+                </span>
+
+              </div>
+              <div class="ms-3">
+                <h6 class="opacity-7">Address</h6>
+              </div>
+              <div class="ms-auto">
+                <h4>Victoria, British Columbia, Canada</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- right side -->
+        <div class="col-lg-6">
+          <div class="full-width">
+            <form id="contact-form" method="post" action="{{ url_for('contact') }} novalidate="true">
+
+              <!-- <div class="messages"></div> -->
+
+              <div class="controls row">
+
+                <div class="col-lg-6">
+                  <div class="form-group mb-3">
+                    <label>Your Name</label>
+                    <input id="form_name" type="text" name="name" required="required">
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group mb-3">
+                    <label>Your Email</label>
+                    <input id="form_email" type="email" name="email" required="required">
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-group">
+                    <label>Your Message</label>
+
+                    <textarea class="textbox"> </textarea>
+                  </div>
+                  <div class="mt-2 mb-4 round-button text-center">
+                    <button type="submit" class="disabled">
+                      <span class="text">Send A Message</span>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

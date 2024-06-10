@@ -1,49 +1,57 @@
-const express = require("express")
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
+const express = require('express')
+const session = require('express-session');
+const mongoose = require('mongoose')
+const MongoStore = require('connect-mongo');
+const expressLayouts = require('express-ejs-layouts')
+const methodOverride = require('method-override')
+
 const app = express()
-const path = require('path');
-require('dotenv').config();
-const { Pool } = require('pg');
-const port = process.env.PORT || 3000;
+
+const indexRouter = require('./routes/index')
+const productsRouter = require('./routes/products')
+const aboutRouter = require('./routes/about')
+const loginRouter = require('./routes/login')
+const cartRouter = require('./routes/cart')
+
+app.set('view engine', 'ejs')
+app.set('views', __dirname + '/views')
+app.set('layout', 'layouts/layout1')
+app.use(expressLayouts)
+app.use(methodOverride('_method'))
+app.use(express.static('public'))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 
+// app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 
 
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
-const pool = new Pool({
-    connectionString: process.env.DB_connectionString
-});
+app.use(session({
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: process.env.DATABASE_URL,
+        ttl: 24 * 60 * 60 // 1 day life in DB
+    }),
+    cookie: {
+        maxAge: null, // Session cookie will be deleted when the browser(not just tab) is closed
+        expires:null,
+        secure: process.env.NODE_ENV === 'production', // Only use secure cookies in production
+        sameSite: 'strict' // Helps to prevent CSRF attacks
+    } 
+}))
 
+app.use('/', indexRouter)
+app.use('/products', productsRouter)
+app.use('/about', aboutRouter)
+app.use('/login', loginRouter)
+app.use('/cart', cartRouter)
 
-
-// Set up Express to use EJS as the view engine
-app.set('view engine', 'ejs');
-app.use(express.static('public'));
-
-
-app.get('/', async (req, res) => {
-    // Connect to database
-    const client = await pool.connect();
-    try {
-        
-        // Query the PostgreSQL items table to retrieve item data
-        const queryResult = await client.query('SELECT * FROM items');
-        const items = queryResult.rows;
-
-        console.log(items);
-        // Render the index.ejs template with the items data
-        res.render('index', { items });
-    } catch (error) {
-        console.error('Error fetching items:', error);
-        res.status(500).send('Internal Server Error');
-    } finally {
-        client.release(); // Release the client back to the pool
-        console.log('Connection closed');
-    }
-    
-});
-
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/login.html'));
-});
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
+app.listen(process.envPORT || 3000)
