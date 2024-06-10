@@ -54,4 +54,4 @@ app.use('/about', aboutRouter)
 app.use('/login', loginRouter)
 app.use('/cart', cartRouter)
 
-app.listen(process.envPORT || 3000)
+app.listen(process.env.PORT || 3000)
