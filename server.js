@@ -46,10 +46,18 @@ app.use(session({
     } 
 }))
 
-app.use('/', indexRouter)
-app.use('/products', productsRouter)
-app.use('/about', aboutRouter)
-app.use('/login', loginRouter)
-app.use('/cart', cartRouter)
+// app.use('/', indexRouter)
+// app.use('/products', productsRouter)
+// app.use('/about', aboutRouter)
+// app.use('/login', loginRouter)
+// app.use('/cart', cartRouter)
+
+app.get('/', (req, res) => {
+    if (mongoose.connection.readyState === 1) {
+        res.send('Hello World');
+    } else {
+        res.send('Bye World');
+    }
+});
 
 app.listen(process.env.PORT || 3000)
